@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSVolume", "BSVolume\BSVolume.csproj", "{AE258F22-4741-4699-95C5-83C377D3FF57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE258F22-4741-4699-95C5-83C377D3FF57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE258F22-4741-4699-95C5-83C377D3FF57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE258F22-4741-4699-95C5-83C377D3FF57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE258F22-4741-4699-95C5-83C377D3FF57}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65059830-835F-4887-9D40-1CAD3DD80AF7}
+	EndGlobalSection
+EndGlobal
