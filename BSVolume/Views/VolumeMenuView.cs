@@ -13,19 +13,17 @@ namespace BSVolume.Views
     [ViewDefinition("BSVolume.Views.VolumeMenuView.bsml")]
     internal class VolumeMenuView : BSMLAutomaticViewController
     {
-        /*
-        private string yourTextField = "Hello World";
-        public string YourTextProperty
+
+        [UIValue("gameVolume")]
+        public float gameVolume = 0.5f;
+
+
+        [UIAction("setGameVolume")]
+        public void setGameVolume(float value)
         {
-            get { return yourTextField; }
-            set
-            {
-                if (yourTextField == value) return;
-                yourTextField = value;
-                NotifyPropertyChanged();
-            }
+            gameVolume = value;
+            Plugin.Log.Info($"game-value value applied, now: {gameVolume}");
         }
-        */
 
         [UIAction("#post-parse")]
         internal void PostParse()
