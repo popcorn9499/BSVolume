@@ -1,8 +1,7 @@
 ﻿<bg xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
 	xsi:schemaLocation='https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd'
 	>
-	<horizontal horizontal-fit="PreferredSize" >
-		<text text='Message:' />
-		<text text="~YourTextProperty" />
+	<horizontal horizontal-fit="PreferredSize">
+		<slider-setting text="Game Volume" value="game-volume" increment="0.01" min="0.0" max="1.0" show-buttons="true"/>
 	</horizontal>
 </bg>

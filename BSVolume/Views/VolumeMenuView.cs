@@ -13,6 +13,7 @@ namespace BSVolume.Views
     [ViewDefinition("BSVolume.Views.VolumeMenuView.bsml")]
     internal class VolumeMenuView : BSMLAutomaticViewController
     {
+        /*
         private string yourTextField = "Hello World";
         public string YourTextProperty
         {
@@ -24,6 +25,7 @@ namespace BSVolume.Views
                 NotifyPropertyChanged();
             }
         }
+        */
 
         [UIAction("#post-parse")]
         internal void PostParse()
