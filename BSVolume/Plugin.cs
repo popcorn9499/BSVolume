@@ -25,6 +25,7 @@ namespace BSVolume
             Log = logger;
             zenjector.UseLogger(logger);
             zenjector.Install<VolumeMenuInstaller>(Location.Menu);
+            zenjector.Install<SongVolumeInstaller>(Location.Player);
         }
 
         [OnStart]
