@@ -1,4 +1,4 @@
-using BeatSaberMarkupLanguage;
+﻿using BeatSaberMarkupLanguage;
 using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.Components;
 using BeatSaberMarkupLanguage.ViewControllers;
@@ -43,6 +43,11 @@ namespace BSVolume.Views
             //Plugin.Log.Info(AudioHelpers.NormalizedVolumeToDB(value).ToString());
             //_audioManager.musicVolume = 4f;
             //_audioManager.mainVolume = AudioHelpers.NormalizedVolumeToDB(value);
+            Plugin.Log.Info("Prev Value " + _mainSettingsModelSO.volume.value.ToString());
+            _mainSettingsModelSO.volume.value = value;
+            _mainSettingsModelSO.Save();
+            _mainSettingsModelSO.Load(true);
+            Plugin.Log.Info("Post Value " + _mainSettingsModelSO.volume.value.ToString());
             //_audioManager.sfxVolume = 4f;
         }
 
