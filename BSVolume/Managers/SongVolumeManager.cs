@@ -10,12 +10,14 @@ namespace BSVolume.Managers
         private readonly GameplayCoreSceneSetupData _sceneSetupData;
         private readonly AudioTimeSyncController _audioTimeSyncController;
         private readonly SiraLog _log;
+        private readonly Config _config;
 
-        public SongVolumeManager(GameplayCoreSceneSetupData sceneSetupData, AudioTimeSyncController audioTimeSyncController, SiraLog log)
+        public SongVolumeManager(GameplayCoreSceneSetupData sceneSetupData, AudioTimeSyncController audioTimeSyncController, SiraLog log, Config config)
         {
             this._sceneSetupData = sceneSetupData;
             this._audioTimeSyncController = audioTimeSyncController;
             this._log = log;
+            this._config = config;
         }
 
         public void Initialize()
@@ -26,7 +28,7 @@ namespace BSVolume.Managers
             _log.Info("Level Path: " + customLevel.customLevelPath);
             var src = _audioTimeSyncController.GetComponent<AudioSource>();
             _log.Info("Original Volume: " + src.volume);
-            src.volume = 0.2f;
+            src.volume = _config.songVolume;
             _log.Info("Set volume to -1.2db, " + src.volume);
 
         }
