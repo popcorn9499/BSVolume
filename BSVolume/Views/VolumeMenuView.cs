@@ -1,4 +1,4 @@
-﻿using BeatSaberMarkupLanguage;
+using BeatSaberMarkupLanguage;
 using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.Components;
 using BeatSaberMarkupLanguage.ViewControllers;
@@ -11,8 +11,20 @@ namespace BSVolume.Views
 {
     [HotReload(RelativePathToLayout = @"./VolumeMenuView.bsml")]
     [ViewDefinition("BSVolume.Views.VolumeMenuView.bsml")]
+
     internal class VolumeMenuView : BSMLAutomaticViewController
     {
+        private SiraLog _log;
+        private AudioManagerSO _audioManager;
+        private MainSettingsModelSO _mainSettingsModelSO;
+
+        [Inject]
+        public void Construct(SiraLog log, AudioManagerSO audioManager, MainSettingsModelSO mainSettingsModelSO)
+        {
+            _log = log;
+            _audioManager = audioManager;
+            _mainSettingsModelSO = mainSettingsModelSO;
+        }
 
         [UIValue("gameVolume")]
         public float gameVolume = 0.5f;
@@ -23,6 +35,15 @@ namespace BSVolume.Views
         {
             gameVolume = value;
             Plugin.Log.Info($"game-value value applied, now: {gameVolume}");
+            
+            //min volume
+            _audioManager.musicVolume = -30f;
+            _audioManager.mainVolume = -30f;
+            _audioManager.sfxVolume = -30f;
+            //Plugin.Log.Info(AudioHelpers.NormalizedVolumeToDB(value).ToString());
+            //_audioManager.musicVolume = 4f;
+            //_audioManager.mainVolume = AudioHelpers.NormalizedVolumeToDB(value);
+            //_audioManager.sfxVolume = 4f;
         }
 
         [UIAction("#post-parse")]
