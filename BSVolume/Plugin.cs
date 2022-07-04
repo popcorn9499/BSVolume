@@ -6,6 +6,7 @@ using IPA.Config.Stores;
 using IPA.Utilities;
 using SiraUtil.Zenject;
 using IPALogger = IPA.Logging.Logger;
+using Conf = IPA.Config.Config;
 
 namespace BSVolume
 {
@@ -19,11 +20,14 @@ namespace BSVolume
         internal static IPALogger Log { get; private set; }
 
         [Init]
-        public Plugin(IPALogger logger, Zenjector zenjector)
+        public Plugin(Conf conf, IPALogger logger, Zenjector zenjector)
         {
             Instance = this;
             Log = logger;
             zenjector.UseLogger(logger);
+
+            Config config = conf.Generated<Config>();
+            zenjector.Install<CoreInstaller>(Location.App, config);
             zenjector.Install<VolumeMenuInstaller>(Location.Menu);
             zenjector.Install<SongVolumeInstaller>(Location.Player);
         }
