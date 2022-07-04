@@ -20,6 +20,24 @@ namespace BSVolume.Views
         private MainSettingsModelSO _mainSettingsModelSO;
         private AudioTimeSyncController _audioTimeSyncController;
         private Config _config;
+
+        private float _gameVolume = 0f;
+
+        [UIValue("gameVolume")]
+        public float gameVolume
+        {
+            get => _gameVolume;
+            set
+            {
+                if (_gameVolume != value)
+                {
+                    _gameVolume = value;
+                    NotifyPropertyChanged();
+                }
+            }
+
+        }
+
         [Inject]
         public void Construct(SiraLog log, AudioManagerSO audioManager, MainSettingsModelSO mainSettingsModelSO, Config config)
         {
@@ -27,11 +45,11 @@ namespace BSVolume.Views
             _audioManager = audioManager;
             _mainSettingsModelSO = mainSettingsModelSO;
             _config = config;
+            gameVolume = _config.songVolume;
             //_audioTimeSyncController = audioTimeSyncController;
         }
 
-        [UIValue("gameVolume")]
-        public float gameVolume = 0.5f;
+        
 
 
         [UIAction("setGameVolume")]
