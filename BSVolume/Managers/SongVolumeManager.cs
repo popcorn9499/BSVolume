@@ -23,13 +23,8 @@ namespace BSVolume.Managers
         public void Initialize()
         {
             _log.Info("In SongVolumeManager");
-            var previewBeatmapLevel = _sceneSetupData.previewBeatmapLevel;
-            if (!(previewBeatmapLevel is CustomPreviewBeatmapLevel customLevel)) return;
-            _log.Info("Level Path: " + customLevel.customLevelPath);
             var src = _audioTimeSyncController.GetComponent<AudioSource>();
-            _log.Info("Original Volume: " + src.volume);
             src.volume = _config.songVolume;
-            _log.Info("Set volume to -1.2db, " + src.volume);
 
         }
     }
