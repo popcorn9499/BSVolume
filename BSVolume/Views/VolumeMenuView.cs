@@ -86,8 +86,7 @@ namespace BSVolume.Views
         public void setGameVolume(float value)
         {
             gameVolume = value;
-            Plugin.Log.Info($"game-value value applied, now: {gameVolume}");
-
+            _log.Info($"game-value value applied, now: {gameVolume}");
             _config.songVolume = value;
         }
 
