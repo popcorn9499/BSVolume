@@ -22,6 +22,9 @@ namespace BSVolume.Views
         private Config _config;
 
         private float _gameVolume = 0f;
+        private float _prevVolume = 0f;
+        private float _backgroundVolume = 0f;
+
 
         [UIValue("gameVolume")]
         public float gameVolume
@@ -35,7 +38,34 @@ namespace BSVolume.Views
                     NotifyPropertyChanged();
                 }
             }
+        }
 
+        [UIValue("previewVolume")]
+        public float previewVolume
+        {
+            get => _prevVolume;
+            set
+            {
+                if (_prevVolume != value)
+                {
+                    _prevVolume = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        [UIValue("backgroundVolume")]
+        public float backgroundVolume
+        {
+            get => _backgroundVolume;
+            set
+            {
+                if (_backgroundVolume != value)
+                {
+                    _backgroundVolume = value;
+                    NotifyPropertyChanged();
+                }
+            }
         }
 
         [Inject]

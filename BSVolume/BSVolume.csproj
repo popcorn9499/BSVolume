@@ -120,6 +120,7 @@
     <Compile Include="Config.cs" />
     <Compile Include="Installers\CoreInstaller.cs" />
     <Compile Include="Installers\SongVolumeInstaller.cs" />
+    <Compile Include="Managers\MenuVolumeManager.cs" />
     <Compile Include="Managers\SongVolumeManager.cs" />
     <Compile Include="Managers\VolumeMenuManager.cs" />
     <Compile Include="Plugin.cs" />

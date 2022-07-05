@@ -10,7 +10,9 @@ namespace BSVolume.Installers
     {
         public override void InstallBindings()
         {
-            
+
+
+            Container.BindInterfacesAndSelfTo<MenuVolumeManager>().AsSingle();
 
             Container.Bind<VolumeMenuView>().FromNewComponentAsViewController().AsSingle();
             Container.BindInterfacesTo<VolumeMenuManager>().AsSingle();
