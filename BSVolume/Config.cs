@@ -8,7 +8,6 @@ namespace BSVolume
     {
         public virtual float songVolume { get; set; } = 1f;
         public virtual float songPreviewVolume { get; set; } = 1f;
-
         public virtual float ambienceVolume { get; set; } = 1f;
     }
 }
