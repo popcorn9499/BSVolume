@@ -1,4 +1,4 @@
-using BeatSaberMarkupLanguage;
+﻿using BeatSaberMarkupLanguage;
 using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.Components;
 using BeatSaberMarkupLanguage.ViewControllers;
@@ -17,9 +17,6 @@ namespace BSVolume.Views
     internal class VolumeMenuView : BSMLAutomaticViewController
     {
         private SiraLog _log;
-        private AudioManagerSO _audioManager;
-        private MainSettingsModelSO _mainSettingsModelSO;
-        private AudioTimeSyncController _audioTimeSyncController;
         private MenuVolumeManager _menuVolumeManager;
         private Config _config;
 
@@ -71,20 +68,13 @@ namespace BSVolume.Views
         }
 
         [Inject]
-        public void Construct(SiraLog log, AudioManagerSO audioManager, MainSettingsModelSO mainSettingsModelSO, MenuVolumeManager menuVolumeManager, Config config)
+        public void Construct(SiraLog log, MenuVolumeManager menuVolumeManager, Config config)
         {
             _log = log;
-            _audioManager = audioManager;
-            _mainSettingsModelSO = mainSettingsModelSO;
             _config = config;
             _menuVolumeManager = menuVolumeManager;
-
             songVolume = _config.songVolume;
-            //_audioTimeSyncController = audioTimeSyncController;
         }
-
-        
-
 
         [UIAction("setSongVolume")]
         public void setGameVolume(float value)
@@ -115,7 +105,7 @@ namespace BSVolume.Views
         [UIAction("#post-parse")]
         internal void PostParse()
         {
-            // Code to run after BSML finishes
+            _log.Info("Welcome to my weird wacky mod!");
         }
     }
 }

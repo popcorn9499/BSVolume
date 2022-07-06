@@ -12,7 +12,6 @@ namespace BSVolume.Managers
     {
         private readonly VolumeMenuView _flowCoordinator;
         private readonly MainFlowCoordinator _mainFlowCoordinator;
-        private readonly MenuButton _menuButton;
 
         public VolumeMenuManager(MainFlowCoordinator mainFlowCoordinator, VolumeMenuView flowCoordinator)
         {
@@ -24,13 +23,12 @@ namespace BSVolume.Managers
         {
             if (GameplaySetup.IsSingletonAvailable)
             {
-                GameplaySetup.instance.RemoveTab("ME");
+                GameplaySetup.instance.RemoveTab("BSVolume");
             }
         }
 
         public void Initialize()
         {
-            Plugin.Log.Info("HEYOO");
             GameplaySetup.instance.AddTab("BSVolume", "BSVolume.Views.VolumeMenuView.bsml", _flowCoordinator);
         }
 

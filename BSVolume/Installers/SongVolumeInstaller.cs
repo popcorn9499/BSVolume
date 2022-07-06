@@ -8,7 +8,6 @@ namespace BSVolume.Installers
         public override void InstallBindings()
         {
             Container.BindInterfacesTo<SongVolumeManager>().AsSingle();
-
         }
     }
 }
