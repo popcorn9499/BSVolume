@@ -13,17 +13,9 @@ namespace BSVolume
     [Plugin(RuntimeOptions.SingleStartInit)]
     public class Plugin
     {
-        internal static Plugin Instance { get; private set; }
-        /// <summary>
-        /// Use to send log messages through BSIPA.
-        /// </summary>
-        internal static IPALogger Log { get; private set; }
-
         [Init]
         public Plugin(Conf conf, IPALogger logger, Zenjector zenjector)
         {
-            Instance = this;
-            Log = logger;
             zenjector.UseLogger(logger);
 
             Config config = conf.Generated<Config>();
@@ -31,18 +23,5 @@ namespace BSVolume
             zenjector.Install<VolumeMenuInstaller>(Location.Menu);
             zenjector.Install<SongVolumeInstaller>(Location.Player);
         }
-
-        [OnStart]
-        public void OnApplicationStart()
-        {
-            Plugin.Log.Info("OnApplicationStart");
-        }
-
-        [OnExit]
-        public void OnApplicationQuit()
-        {
-
-        }
-
     }
 }
