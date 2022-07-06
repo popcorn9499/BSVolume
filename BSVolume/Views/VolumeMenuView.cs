@@ -2,6 +2,7 @@
 using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.Components;
 using BeatSaberMarkupLanguage.ViewControllers;
+using BSVolume.Managers;
 using SiraUtil.Logging;
 using UnityEngine;
 using Zenject;
@@ -19,6 +20,7 @@ namespace BSVolume.Views
         private AudioManagerSO _audioManager;
         private MainSettingsModelSO _mainSettingsModelSO;
         private AudioTimeSyncController _audioTimeSyncController;
+        private MenuVolumeManager _menuVolumeManager;
         private Config _config;
 
         private float _gameVolume = 0f;
@@ -69,13 +71,14 @@ namespace BSVolume.Views
         }
 
         [Inject]
-        public void Construct(SiraLog log, AudioManagerSO audioManager, MainSettingsModelSO mainSettingsModelSO, Config config)
+        public void Construct(SiraLog log, AudioManagerSO audioManager, MainSettingsModelSO mainSettingsModelSO, MenuVolumeManager menuVolumeManager, Config config)
         {
             _log = log;
             _audioManager = audioManager;
             _mainSettingsModelSO = mainSettingsModelSO;
             _config = config;
             gameVolume = _config.songVolume;
+            _menuVolumeManager = menuVolumeManager;
             //_audioTimeSyncController = audioTimeSyncController;
         }
 
@@ -96,6 +99,7 @@ namespace BSVolume.Views
             gameVolume = value;
             _log.Info($"preview-value value applied, now: {value}");
             _config.songPreview = value;
+            _menuVolumeManager.SetMenuVolume(value);
         }
 
         [UIAction("setBackgroundVolume")]
@@ -103,6 +107,8 @@ namespace BSVolume.Views
         {
             _log.Info($"background-value value applied, now: {value}");
             _config.backgroundPreview = value;
+            _menuVolumeManager.SetMenuAmbienceVolume(value);
+
         }
 
         [UIAction("#post-parse")]
