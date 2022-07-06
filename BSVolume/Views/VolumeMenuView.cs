@@ -11,13 +11,13 @@ using Zenject;
 
 namespace BSVolume.Views
 {
-    [HotReload(RelativePathToLayout = @"./VolumeMenuView.bsml")]
+    [HotReload(RelativePathToLayout = @"./VolumeMenuView.bsml")] //point to my bsml file for this menu
     [ViewDefinition("BSVolume.Views.VolumeMenuView.bsml")]
 
     internal class VolumeMenuView : BSMLAutomaticViewController
     {
         private SiraLog _log;
-        private MenuVolumeManager _menuVolumeManager;
+        private MenuVolumeManager _menuVolumeManager; //stores the menu volume manager for adjusting preview and main menu track volumes
         private Config _config;
 
         private float _songVolume = 0f;
