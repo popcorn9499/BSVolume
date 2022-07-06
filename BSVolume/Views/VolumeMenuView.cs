@@ -23,20 +23,20 @@ namespace BSVolume.Views
         private MenuVolumeManager _menuVolumeManager;
         private Config _config;
 
-        private float _gameVolume = 0f;
+        private float _songVolume = 0f;
         private float _prevVolume = 0f;
         private float _ambienceVolume = 0f;
 
 
         [UIValue("gameVolume")]
-        public float gameVolume
+        public float songVolume
         {
-            get => _gameVolume;
+            get => _songVolume;
             set
             {
-                if (_gameVolume != value)
+                if (_songVolume != value)
                 {
-                    _gameVolume = value;
+                    _songVolume = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -77,26 +77,27 @@ namespace BSVolume.Views
             _audioManager = audioManager;
             _mainSettingsModelSO = mainSettingsModelSO;
             _config = config;
-            gameVolume = _config.songVolume;
             _menuVolumeManager = menuVolumeManager;
+
+            songVolume = _config.songVolume;
             //_audioTimeSyncController = audioTimeSyncController;
         }
 
         
 
 
-        [UIAction("setGameVolume")]
+        [UIAction("setSongVolume")]
         public void setGameVolume(float value)
         {
-            gameVolume = value;
-            _log.Info($"game-value value applied, now: {gameVolume}");
+            songVolume = value;
+            _log.Info($"game-value value applied, now: {value}");
             _config.songVolume = value;
         }
 
         [UIAction("setPreviewVolume")]
         public void setPreviewVolume(float value)
         {
-            gameVolume = value;
+            previewVolume = value;
             _log.Info($"preview-value value applied, now: {value}");
             _config.songPreviewVolume = value;
             _menuVolumeManager.SetMenuVolume(value);
@@ -105,10 +106,10 @@ namespace BSVolume.Views
         [UIAction("setAmbienceVolume")]
         public void setAmbienceVolume(float value)
         {
+            ambienceVolume = value;
             _log.Info($"background-value value applied, now: {value}");
             _config.ambienceVolume = value;
             _menuVolumeManager.SetMenuAmbienceVolume(value);
-
         }
 
         [UIAction("#post-parse")]
