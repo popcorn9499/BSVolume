@@ -7,8 +7,8 @@ namespace BSVolume
     internal class Config
     {
         public virtual float songVolume { get; set; } = 0.8f;
-        public virtual float songPreview { get; set; } = 0.8f;
+        public virtual float songPreviewVolume { get; set; } = 0.8f;
 
-        public virtual float backgroundPreview { get; set; } = 0.8f;
+        public virtual float ambienceVolume { get; set; } = 0.8f;
     }
 }
