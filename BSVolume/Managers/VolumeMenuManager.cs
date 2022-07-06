@@ -10,13 +10,11 @@ namespace BSVolume.Managers
 {
     internal class VolumeMenuManager : IInitializable, IDisposable
     {
-        private readonly VolumeMenuView _flowCoordinator;
-        private readonly MainFlowCoordinator _mainFlowCoordinator;
+        private readonly VolumeMenuView _volumeMenuView;
 
-        public VolumeMenuManager(MainFlowCoordinator mainFlowCoordinator, VolumeMenuView flowCoordinator)
+        public VolumeMenuManager(VolumeMenuView volumeMenuView)
         {
-            _mainFlowCoordinator = mainFlowCoordinator;
-            _flowCoordinator = flowCoordinator;
+            _volumeMenuView = volumeMenuView;
         }
 
         public void Dispose()
@@ -29,7 +27,7 @@ namespace BSVolume.Managers
 
         public void Initialize()
         {
-            GameplaySetup.instance.AddTab("BSVolume", "BSVolume.Views.VolumeMenuView.bsml", _flowCoordinator);
+            GameplaySetup.instance.AddTab("BSVolume", "BSVolume.Views.VolumeMenuView.bsml", _volumeMenuView);
         }
 
 
