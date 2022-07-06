@@ -7,14 +7,12 @@ namespace BSVolume.Managers
 {
     internal class SongVolumeManager : IInitializable
     {
-        private readonly GameplayCoreSceneSetupData _sceneSetupData;
         private readonly AudioTimeSyncController _audioTimeSyncController;
         private readonly SiraLog _log;
         private readonly Config _config;
 
-        public SongVolumeManager(GameplayCoreSceneSetupData sceneSetupData, AudioTimeSyncController audioTimeSyncController, SiraLog log, Config config)
+        public SongVolumeManager(AudioTimeSyncController audioTimeSyncController, SiraLog log, Config config)
         {
-            this._sceneSetupData = sceneSetupData;
             this._audioTimeSyncController = audioTimeSyncController;
             this._log = log;
             this._config = config;
