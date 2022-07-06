@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using Zenject;
 using SiraUtil.Logging;
@@ -21,7 +21,7 @@ namespace BSVolume.Managers
         public void Initialize()
         {
             _log.Info("In SongVolumeManager");
-            var src = _audioTimeSyncController.GetComponent<AudioSource>();
+            AudioSource src = _audioTimeSyncController.GetComponent<AudioSource>(); 
             src.volume = _config.songVolume;
 
         }
