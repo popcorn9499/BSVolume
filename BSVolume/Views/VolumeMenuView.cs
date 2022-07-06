@@ -90,6 +90,21 @@ namespace BSVolume.Views
             _config.songVolume = value;
         }
 
+        [UIAction("setPreviewVolume")]
+        public void setPreviewVolume(float value)
+        {
+            gameVolume = value;
+            _log.Info($"preview-value value applied, now: {value}");
+            _config.songPreview = value;
+        }
+
+        [UIAction("setBackgroundVolume")]
+        public void setBackgroundVolume(float value)
+        {
+            _log.Info($"background-value value applied, now: {value}");
+            _config.backgroundPreview = value;
+        }
+
         [UIAction("#post-parse")]
         internal void PostParse()
         {
