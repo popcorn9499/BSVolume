@@ -7,7 +7,7 @@ namespace BSVolume.Installers
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesTo<SongVolumeManager>().AsSingle();
+            Container.BindInterfacesTo<SongVolumeManager>().AsSingle(); //binds the class controlling applying our in game song volume settings
         }
     }
 }

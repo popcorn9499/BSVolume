@@ -14,7 +14,7 @@ namespace BSVolume.Installers
 
         public override void InstallBindings()
         {
-            Container.BindInstance(_config).AsSingle();
+            Container.BindInstance(_config).AsSingle(); //stores the config for zenject so we can request the config
         }
     }
 }

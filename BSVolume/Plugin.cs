@@ -19,9 +19,10 @@ namespace BSVolume
             zenjector.UseLogger(logger);
 
             Config config = conf.Generated<Config>();
-            zenjector.Install<CoreInstaller>(Location.App, config);
-            zenjector.Install<VolumeMenuInstaller>(Location.Menu);
-            zenjector.Install<SongVolumeInstaller>(Location.Player);
+            zenjector.Install<CoreInstaller>(Location.App, config); //handle storing the config for zenject
+            zenjector.Install<SongVolumeInstaller>(Location.Player); //handle applying the song volume for in game
+
+            zenjector.Install<VolumeMenuInstaller>(Location.Menu); //handle the actual menu you interact with
         }
     }
 }
