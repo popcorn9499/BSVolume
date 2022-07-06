@@ -73,7 +73,10 @@ namespace BSVolume.Views
             _log = log;
             _config = config;
             _menuVolumeManager = menuVolumeManager;
+            //apply the config to the menu
             songVolume = _config.songVolume;
+            previewVolume = _config.songPreviewVolume;
+            ambienceVolume = _config.ambienceVolume;
         }
 
         [UIAction("setSongVolume")]
