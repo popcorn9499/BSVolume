@@ -22,7 +22,7 @@ namespace BSVolume.Managers
 
         public void Initialize()
         {
-            SetMenuVolume(_config.songPreview);
+            SetMenuVolume(_config.songPreviewVolume);
         }
 
         public void SetMenuVolume(float volume)
