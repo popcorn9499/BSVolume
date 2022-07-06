@@ -1,4 +1,4 @@
-﻿using BeatSaberMarkupLanguage;
+using BeatSaberMarkupLanguage;
 using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.Components;
 using BeatSaberMarkupLanguage.ViewControllers;
@@ -28,7 +28,7 @@ namespace BSVolume.Views
         private float _ambienceVolume = 0f;
 
 
-        [UIValue("gameVolume")]
+        [UIValue("songVolume")]
         public float songVolume
         {
             get => _songVolume;
