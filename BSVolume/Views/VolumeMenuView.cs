@@ -80,6 +80,9 @@ namespace BSVolume.Views
                 if (_ambienceVolume != value)
                 {
                     _ambienceVolume = value;
+                    _log.Info($"background-value value applied, now: {value}");
+                    _config.ambienceVolume = value;
+                    _menuVolumeManager.SetMenuAmbienceVolume(value);
                     NotifyPropertyChanged();
                 }
             }
@@ -115,23 +118,18 @@ namespace BSVolume.Views
         public void setGameVolume(float value)
         {
             songVolume = value;
-            
         }
 
         [UIAction("setPreviewVolume")]
         public void setPreviewVolume(float value)
         {
             previewVolume = value;
-            
         }
 
         [UIAction("setAmbienceVolume")]
         public void setAmbienceVolume(float value)
         {
             ambienceVolume = value;
-            _log.Info($"background-value value applied, now: {value}");
-            _config.ambienceVolume = value;
-            _menuVolumeManager.SetMenuAmbienceVolume(value);
         }
 
         [UIAction("#post-parse")]
