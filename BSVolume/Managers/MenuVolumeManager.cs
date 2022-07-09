@@ -37,7 +37,15 @@ namespace BSVolume.Managers
         public void SetMenuAmbienceVolume(float volume)
         {
             var audioClip = DefaultAudioClip(ref _songPreviewPlayer);
-            _songPreviewPlayer.CrossfadeTo(audioClip, AudioHelpers.NormalizedVolumeToDB(volume), Mathf.Max(Random.Range(0f, audioClip.length - 0.1f), 0f), -1f, true, null);
+            try
+            {
+                _songPreviewPlayer.CrossfadeTo(audioClip, AudioHelpers.NormalizedVolumeToDB(volume), Mathf.Max(Random.Range(0f, audioClip.length - 0.1f), 0f), -1f, true, null);
+
+            }
+            catch
+            {
+
+            }
         }
     }
 }
