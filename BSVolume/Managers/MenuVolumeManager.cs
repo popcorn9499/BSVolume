@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Zenject;
 using SiraUtil.Logging;
 using IPA.Utilities;
