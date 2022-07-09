@@ -6,6 +6,7 @@ using BSVolume.Managers;
 using SiraUtil.Logging;
 using UnityEngine;
 using Zenject;
+using System;
 
 
 
@@ -36,6 +37,13 @@ namespace BSVolume.Views
                 if (_songVolume != value)
                 {
                     _songVolume = value;
+                    if (gamePrevLock)
+                    {
+                        previewVolume = value;
+                        _log.Info($"preview-value value applied, now: {value}");
+                    }
+                    _log.Info($"game-value value applied, now: {value}");
+                    _config.songVolume = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -50,6 +58,14 @@ namespace BSVolume.Views
                 if (_prevVolume != value)
                 {
                     _prevVolume = value;
+                    if (gamePrevLock)
+                    {
+                        songVolume = value;
+                        _log.Info($"game-value value applied, now: {value}");
+                    }
+                    _log.Info($"preview-value value applied, now: {value}");
+                    _config.songPreviewVolume = value;
+                    _menuVolumeManager.SetMenuVolume(value);
                     NotifyPropertyChanged();
                 }
             }
@@ -99,17 +115,14 @@ namespace BSVolume.Views
         public void setGameVolume(float value)
         {
             songVolume = value;
-            _log.Info($"game-value value applied, now: {value}");
-            _config.songVolume = value;
+            
         }
 
         [UIAction("setPreviewVolume")]
         public void setPreviewVolume(float value)
         {
             previewVolume = value;
-            _log.Info($"preview-value value applied, now: {value}");
-            _config.songPreviewVolume = value;
-            _menuVolumeManager.SetMenuVolume(value);
+            
         }
 
         [UIAction("setAmbienceVolume")]
