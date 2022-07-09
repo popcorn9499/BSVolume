@@ -23,7 +23,9 @@ namespace BSVolume.Views
         private float _songVolume = 0f;
         private float _prevVolume = 0f;
         private float _ambienceVolume = 0f;
-
+        private bool _gamePrevLock = false;
+        
+        
 
         [UIValue("songVolume")]
         public float songVolume
@@ -62,6 +64,20 @@ namespace BSVolume.Views
                 if (_ambienceVolume != value)
                 {
                     _ambienceVolume = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        [UIValue("gamePrevLock")]
+        public bool gamePrevLock
+        {
+            get => _gamePrevLock;
+            set
+            {
+                if (_gamePrevLock != value)
+                {
+                    _gamePrevLock = value;
                     NotifyPropertyChanged();
                 }
             }
