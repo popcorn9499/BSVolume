@@ -100,6 +100,7 @@ namespace BSVolume.Views
                 {
                     previewSlider.interactable = !value;
                     _gamePrevLock = value;
+                    _config.gamePrevLock = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -115,6 +116,7 @@ namespace BSVolume.Views
             songVolume = _config.songVolume;
             previewVolume = _config.songPreviewVolume;
             ambienceVolume = _config.ambienceVolume;
+            gamePrevLock = _config.gamePrevLock;
         }
 
         [UIAction("setSongVolume")]
