@@ -25,8 +25,10 @@ namespace BSVolume.Views
         private float _prevVolume = 0f;
         private float _ambienceVolume = 0f;
         private bool _gamePrevLock = false;
-        
-        
+
+        [UIComponent("previewSlider")]
+        private BeatSaberMarkupLanguage.Components.Settings.GenericInteractableSetting previewSlider;
+
 
         [UIValue("songVolume")]
         public float songVolume
@@ -96,6 +98,7 @@ namespace BSVolume.Views
             {
                 if (_gamePrevLock != value)
                 {
+                    previewSlider.interactable = !value;
                     _gamePrevLock = value;
                     NotifyPropertyChanged();
                 }

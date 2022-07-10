@@ -4,7 +4,7 @@
 	<vertical vertical-fit="PreferredSize">
 		<text text="Game Volume Settings" align='Center'></text>
 		<slider-setting text="Song Volume" value="songVolume" increment="0.01" min="0.0" max="1.0" show-buttons="true" on-change="setSongVolume"/>
-		<slider-setting text="Preview Volume" value="previewVolume" increment="0.01" min="0.0" max="1.0" show-buttons="true" on-change="setPreviewVolume"/>
+		<slider-setting text="Preview Volume" id="previewSlider" value="previewVolume" increment="0.01" min="0.0" max="1.0" show-buttons="true" on-change="setPreviewVolume"/>
 		<text text='Main Menu Volume Settings' align='Center'></text>
 		<slider-setting text="Game Ambience Volume" value="ambienceVolume" increment="0.01" min="0.0" max="1.0" show-buttons="true" on-change="setAmbienceVolume"/>
 		<bool-setting text='Game/Preview Lock' value='gamePrevLock' apply-on-change='true'></bool-setting>
