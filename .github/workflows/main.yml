@@ -1,0 +1,37 @@
+name: Build
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'BSVolume.sln'
+      - 'BSVolume/**'
+      - '.github/workflows/main.yml'
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: GetStrippedRefs
+      env:
+        FILES_URL: ${{ secrets.BSFILES_URL }}
+      run: wget "$FILES_URL" -q -O bsfiles.zip
+    - name: ExtractRefs
+      run: unzip -q -n bsfiles.zip -d ./Refs
+    - name: Download Mod Dependencies
+      uses: Goobwabber/download-beatmods-deps@1.2
+      with:
+        manifest: ${{github.workspace}}/BSVolume/manifest.json
+    - name: Build
+      id: Build
+      env:
+        FrameworkPathOverride: /usr/lib/mono/4.8-api
+      run: dotnet build --configuration Release
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: ${{ steps.Build.outputs.filename }}
+        path: ${{ steps.Build.outputs.artifactpath }}
