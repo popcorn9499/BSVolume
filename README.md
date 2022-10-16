@@ -6,7 +6,6 @@ A Beat Saber mod that adds in song menu volume controls for the level you are ab
 
 All dependencies can be installed from ModAssistant/BeatMods
 * SiraUtil v3.0.0+
-* SongCore v3.9.5+
 * BSML v1.6.3+
 
 
