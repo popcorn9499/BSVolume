@@ -5,6 +5,8 @@ using BeatSaberMarkupLanguage.MenuButtons;
 using Zenject;
 using BSVolume.Views;
 
+//adds the BSVolume tab to the song select mod menus
+
 namespace BSVolume.Managers
 {
     internal class VolumeMenuManager : IInitializable, IDisposable
