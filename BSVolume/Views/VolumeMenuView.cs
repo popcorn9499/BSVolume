@@ -96,7 +96,8 @@ namespace BSVolume.Views
             get => _gamePrevLock;
             set
             {
-                if (_gamePrevLock != value)
+                //this checking previewSlider can be null during initalization. Doesn't really matter since the menu havent been created anyways
+                if (_gamePrevLock != value && previewSlider != null)
                 {
                     previewSlider.interactable = !value;
                     _gamePrevLock = value;
