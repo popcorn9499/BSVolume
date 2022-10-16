@@ -7,7 +7,7 @@ using SiraUtil.Logging;
 using UnityEngine;
 using Zenject;
 
-
+//the menu view for setting volume levels
 
 
 namespace BSVolume.Views
@@ -137,6 +137,7 @@ namespace BSVolume.Views
             ambienceVolume = value;
         }
 
+        //log information for fun?
         [UIAction("#post-parse")]
         internal void PostParse()
         {
