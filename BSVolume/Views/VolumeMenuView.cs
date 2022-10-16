@@ -42,6 +42,7 @@ namespace BSVolume.Views
                     if (gamePrevLock)
                     {
                         previewVolume = value;
+                        _config.songPreviewVolume = value;
                         _log.Info($"preview-value value applied, now: {value}");
                     }
                     _log.Info($"game-value value applied, now: {value}");
