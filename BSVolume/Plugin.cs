@@ -23,6 +23,7 @@ namespace BSVolume
             zenjector.Install<SongVolumeInstaller>(Location.Player); //handle applying the song volume for in game
 
             zenjector.Install<VolumeMenuInstaller>(Location.Menu); //handle the actual menu you interact with
+            //test
         }
     }
 }
