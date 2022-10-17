@@ -133,6 +133,10 @@ namespace BSVolume.Views
         {
 
             _log.Info("Welcome to my weird wacky mod!");
+            _log.Info($"background-value value applied, now: {ambienceVolume}");
+            _log.Info($"song-value value applied, now: {songVolume}");
+            _log.Info($"preview-value value applied, now: {previewVolume}");
+            _log.Info($"master-value value applied, now: {masterSongVolume}");
         }
 
         public void loadConf()
