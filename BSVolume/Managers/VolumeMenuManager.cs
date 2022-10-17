@@ -12,7 +12,6 @@ namespace BSVolume.Managers
     internal class VolumeMenuManager : IInitializable, IDisposable
     {
         private readonly VolumeMenuView _volumeMenuView; //the volumemenuview for the actual menu
-
         public VolumeMenuManager(VolumeMenuView volumeMenuView)
         {
             _volumeMenuView = volumeMenuView; 
@@ -30,6 +29,8 @@ namespace BSVolume.Managers
         {
             GameplaySetup.instance.AddTab("BSVolume", "BSVolume.Views.VolumeMenuView.bsml", _volumeMenuView); //adding the volume tab
         }
+
+        
 
 
     }

@@ -24,10 +24,8 @@ namespace BSVolume.Views
         private float _songVolume = 0f;
         private float _prevVolume = 0f;
         private float _ambienceVolume = 0f;
-        private bool _gamePrevLock = false;
 
-        [UIComponent("previewSlider")]
-        private BeatSaberMarkupLanguage.Components.Settings.GenericInteractableSetting previewSlider;
+
 
 
         [UIValue("songVolume")]
@@ -38,13 +36,6 @@ namespace BSVolume.Views
             {
                 if (_songVolume != value)
                 {
-                    _songVolume = value;
-                    if (gamePrevLock)
-                    {
-                        previewVolume = value;
-                        _config.songPreviewVolume = value;
-                        _log.Info($"preview-value value applied, now: {value}");
-                    }
                     _log.Info($"game-value value applied, now: {value}");
                     _config.songVolume = value;
                     NotifyPropertyChanged();
@@ -60,12 +51,6 @@ namespace BSVolume.Views
             {
                 if (_prevVolume != value)
                 {
-                    _prevVolume = value;
-                    if (gamePrevLock)
-                    {
-                        songVolume = value;
-                        _log.Info($"game-value value applied, now: {value}");
-                    }
                     _log.Info($"preview-value value applied, now: {value}");
                     _config.songPreviewVolume = value;
                     _menuVolumeManager.SetMenuVolume(value);
@@ -91,34 +76,14 @@ namespace BSVolume.Views
             }
         }
 
-        [UIValue("gamePrevLock")]
-        public bool gamePrevLock
-        {
-            get => _gamePrevLock;
-            set
-            {
-                //this checking previewSlider can be null during initalization. Doesn't really matter since the menu havent been created anyways
-                if (_gamePrevLock != value && previewSlider != null)
-                {
-                    previewSlider.interactable = !value;
-                    _gamePrevLock = value;
-                    _config.gamePrevLock = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
         [Inject]
         public void Construct(SiraLog log, MenuVolumeManager menuVolumeManager, Config config)
         {
             _log = log;
             _config = config;
             _menuVolumeManager = menuVolumeManager;
-            //apply the config to the menu
-            songVolume = _config.songVolume;
-            previewVolume = _config.songPreviewVolume;
-            ambienceVolume = _config.ambienceVolume;
-            gamePrevLock = _config.gamePrevLock;
+            loadConf();
+
         }
 
         [UIAction("setSongVolume")]
@@ -143,7 +108,16 @@ namespace BSVolume.Views
         [UIAction("#post-parse")]
         internal void PostParse()
         {
+
             _log.Info("Welcome to my weird wacky mod!");
+        }
+
+        public void loadConf()
+        {
+            //apply the config to the menu
+            songVolume = _config.songVolume;
+            previewVolume = _config.songPreviewVolume;
+            ambienceVolume = _config.ambienceVolume;
         }
     }
 }
