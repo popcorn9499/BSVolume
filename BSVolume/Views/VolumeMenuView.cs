@@ -24,9 +24,22 @@ namespace BSVolume.Views
         private float _songVolume = 0f;
         private float _prevVolume = 0f;
         private float _ambienceVolume = 0f;
+        private float _masterSongVolume = 0f;
 
-
-
+        [UIValue("masterSongVolume")]
+        public float masterSongVolume
+        {
+            get => _masterSongVolume;
+            set
+            {
+                if (_songVolume != value)
+                {
+                    _log.Info($"game-value value applied, now: {value}");
+                    _config.masterSongVolume = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UIValue("songVolume")]
         public float songVolume
@@ -84,6 +97,12 @@ namespace BSVolume.Views
             _menuVolumeManager = menuVolumeManager;
             loadConf();
 
+        }
+
+        [UIAction("setMasterSongVolume")]
+        public void setMasterVolume(float value)
+        {
+            masterSongVolume = value;
         }
 
         [UIAction("setSongVolume")]
