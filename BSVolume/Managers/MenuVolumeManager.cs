@@ -24,7 +24,7 @@ namespace BSVolume.Managers
 
         public void Initialize()
         {
-            SetMenuVolume(_config.songPreviewVolume);
+            SetMenuVolume(_config.songPreviewVolume*_config.masterSongVolume);
             SetMenuAmbienceVolume(_config.ambienceVolume);
         }
         

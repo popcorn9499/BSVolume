@@ -22,7 +22,7 @@ namespace BSVolume.Managers
         {
             _log.Info("Setting the new volume for game");
             AudioSource src = _audioTimeSyncController.GetComponent<AudioSource>(); 
-            src.volume = _config.songVolume;
+            src.volume = _config.songVolume * _config.masterSongVolume;
 
         }
     }
