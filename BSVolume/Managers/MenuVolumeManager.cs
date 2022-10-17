@@ -24,10 +24,16 @@ namespace BSVolume.Managers
 
         public void Initialize()
         {
-            SetMenuVolume(_config.songPreviewVolume*_config.masterSongVolume);
+            SetMenuVolume();
             SetMenuAmbienceVolume(_config.ambienceVolume);
         }
         
+        //handles generically setting the preview and master volume configurations in one spot
+        public void SetMenuVolume()
+        {
+            SetMenuVolume(_config.songPreviewVolume * _config.masterSongVolume);
+        }
+
         //allow us to set a new preview song level
         public void SetMenuVolume(float volume)
         {
