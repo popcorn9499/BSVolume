@@ -36,6 +36,7 @@ namespace BSVolume.Views
                 {
                     _log.Info($"game-value value applied, now: {value}");
                     _config.masterSongVolume = value;
+                    _menuVolumeManager.SetMenuVolume();
                     NotifyPropertyChanged();
                 }
             }
@@ -66,7 +67,7 @@ namespace BSVolume.Views
                 {
                     _log.Info($"preview-value value applied, now: {value}");
                     _config.songPreviewVolume = value;
-                    _menuVolumeManager.SetMenuVolume(value);
+                    _menuVolumeManager.SetMenuVolume();
                     NotifyPropertyChanged();
                 }
             }
