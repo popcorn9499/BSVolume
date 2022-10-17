@@ -135,6 +135,7 @@ namespace BSVolume.Views
         public void loadConf()
         {
             //apply the config to the menu
+            masterSongVolume = _config.masterSongVolume;
             songVolume = _config.songVolume;
             previewVolume = _config.songPreviewVolume;
             ambienceVolume = _config.ambienceVolume;
