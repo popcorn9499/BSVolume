@@ -32,8 +32,9 @@ namespace BSVolume.Views
             get => _masterSongVolume;
             set
             {
-                if (_songVolume != value)
+                if (_masterSongVolume != value)
                 {
+                    _masterSongVolume = value;
                     _log.Info($"game-value value applied, now: {value}");
                     _config.masterSongVolume = value;
                     _menuVolumeManager.SetMenuVolume();
@@ -50,6 +51,7 @@ namespace BSVolume.Views
             {
                 if (_songVolume != value)
                 {
+                    _songVolume = value;
                     _log.Info($"game-value value applied, now: {value}");
                     _config.songVolume = value;
                     NotifyPropertyChanged();
@@ -65,6 +67,7 @@ namespace BSVolume.Views
             {
                 if (_prevVolume != value)
                 {
+                    _prevVolume = value;
                     _log.Info($"preview-value value applied, now: {value}");
                     _config.songPreviewVolume = value;
                     _menuVolumeManager.SetMenuVolume();
